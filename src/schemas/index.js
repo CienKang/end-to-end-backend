@@ -20,3 +20,16 @@ const postNewContentInStorageSchema = Joi.object({
 const updateContentInStorageSchema = Joi.object({
     content: Joi.object().required()
 });
+
+const deleteContentInStorageSchema = Joi.object({
+    id: Joi.string().required()
+});
+
+module.exports = {
+    postNewContentTypeSchema,
+    makeNewFieldInSpecificContentTypeSchema,
+    deleteFieldInSpecificContentTypeSchema,
+    postNewContentInStorageSchema,
+    updateContentInStorageSchema,
+    deleteContentInStorageSchema
+};
