@@ -7,8 +7,8 @@ const contentStorageController = require('../controllers/contentStorages.control
 
 app.route('/contentStorage/:typeId')
     .get(contentStorageController.getContentStorageForTypeId)
-    .post( validatorMiddleware.bodyValidator(schemas.postNewContentInStorageSchema) ,contentStorageController.postContentStorageForTypeId)
-    .patch( validatorMiddleware.bodyValidator(schemas.updateContentInStorageSchema) ,contentStorageController.updateSpecificContentStorageOfTypeId)
-    .delete( validatorMiddleware.bodyValidator(schemas.deleteContentInStorageSchema) ,contentStorageController.deleteSpecificContentStorageOfTypeId);
+    .post(validatorMiddleware.bodyValidator(schemas.postNewContentInStorageSchema), contentStorageController.postContentStorageForTypeId)
+    .patch(validatorMiddleware.bodyValidator(schemas.updateContentInStorageSchema), contentStorageController.updateSpecificContentStorageOfTypeId)
+    .delete(validatorMiddleware.bodyValidator(schemas.deleteContentInStorageSchema), contentStorageController.deleteSpecificContentStorageOfTypeId);
 
 module.exports = app;

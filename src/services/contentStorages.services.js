@@ -1,4 +1,4 @@
-const {contentStorages} = require('../../database/models');
+const { contentStorages } = require('../../database/models');
 
 const getContentStorageForTypeId = async (typeId) => {
     const result = await contentStorages.findAll({
@@ -7,8 +7,8 @@ const getContentStorageForTypeId = async (typeId) => {
     return result;
 };
 
-const postContentStorageForTypeId = async (typeId,content) => {
-    console.log(typeId,content);
+const postContentStorageForTypeId = async (typeId, content) => {
+    console.log(typeId, content);
     const result = await contentStorages.create({
         typeId: typeId,
         data: content
@@ -16,7 +16,7 @@ const postContentStorageForTypeId = async (typeId,content) => {
     return result;
 };
 
-const updateSpecificContentStorageForTypeId = async (id,content) => {
+const updateSpecificContentStorageForTypeId = async (id, content) => {
 
     const dataFound = await contentStorages.findOne({
         where: { id: id },
@@ -35,7 +35,7 @@ const updateSpecificContentStorageForTypeId = async (id,content) => {
     return result;
 };
 
-const deleteSpecificContentStorageForTypeId = async (typeId,id) => {
+const deleteSpecificContentStorageForTypeId = async (typeId, id) => {
     const result = await contentStorages.destroy({
         where: { id: id }
     });

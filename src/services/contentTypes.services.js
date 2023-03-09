@@ -1,12 +1,12 @@
-const {contentTypes,contentStorages} = require('../../database/models');
+const { contentTypes, contentStorages } = require('../../database/models');
 
-const getAllContentTypes = async () =>{
-    
+const getAllContentTypes = async () => {
+
     const result = await contentTypes.findAll({
         attributes: ['typeName', 'fields']
     });
     return result;
-        
+
 };
 
 const createNewContentType = async (newContentType) => {
@@ -14,18 +14,18 @@ const createNewContentType = async (newContentType) => {
     return result;
 };
 
-const addNewFieldContentType = async (newField,typeName) => {
+const addNewFieldContentType = async (newField, typeName) => {
 
     const fields = await contentTypes.findOne({
         where: { typeName: typeName },
-        attributes: ['fields','id']
+        attributes: ['fields', 'id']
     });
-    
+
     await contentTypes.update(
-        { fields: [ ...fields.fields ,newField] },
+        { fields: [...fields.fields, newField] },
         { where: { typeName: typeName } }
     );
-    
+
     const contentStorage = await contentStorages.findAll({
         where: { typeId: fields.id },
         raw: true,
@@ -41,11 +41,11 @@ const addNewFieldContentType = async (newField,typeName) => {
 };
 
 
-const deleteFieldContentType = async (fieldToDelete,typeName) => {
-    
+const deleteFieldContentType = async (fieldToDelete, typeName) => {
+
     const fields = await contentTypes.findOne({
         where: { typeName: typeName },
-        attributes: ['fields','id']
+        attributes: ['fields', 'id']
     });
     const newFields = fields.fields.filter(field => field !== fieldToDelete);
     await contentTypes.update(

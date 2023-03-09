@@ -21,7 +21,7 @@ const postNewContentType = async (req, res) => {
 const addNewFieldInSpecificContentType = async (req, res) => {
     try {
         const { typeName } = req.params;
-        const newField = await ContentTypeServices.addNewFieldContentType(req.body.field,typeName);
+        const newField = await ContentTypeServices.addNewFieldContentType(req.body.field, typeName);
         res.status(200).json(newField);
     } catch (error) {
         res.status(404).json({ message: error.message });
@@ -31,7 +31,7 @@ const addNewFieldInSpecificContentType = async (req, res) => {
 const deleteFieldInSpecificContentType = async (req, res) => {
     try {
         const { typeName } = req.params;
-        const newField = await ContentTypeServices.deleteFieldContentType(req.body.field,typeName);
+        const newField = await ContentTypeServices.deleteFieldContentType(req.body.field, typeName);
         res.status(200).json(newField);
     } catch (error) {
         res.status(404).json({ message: error.message });
