@@ -38,10 +38,21 @@ const deleteFieldInSpecificContentType = async (req, res) => {
     }
 };
 
+const getFieldsInSpecificContentType = async (req, res) => {
+    try {
+        const { typeName } = req.params;
+        const fields = await ContentTypeServices.getFieldsInSpecificContentType(typeName);
+        res.status(200).json(fields);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
+};
+
 
 module.exports = {
     getContentTypes,
     postNewContentType,
     addNewFieldInSpecificContentType,
-    deleteFieldInSpecificContentType
+    deleteFieldInSpecificContentType,
+    getFieldsInSpecificContentType
 };

@@ -3,7 +3,7 @@ const { contentTypes, contentStorages } = require('../../database/models');
 const getAllContentTypes = async () => {
 
     const result = await contentTypes.findAll({
-        attributes: ['typeName', 'fields']
+        attributes: ['typeName', 'fields','id']
     });
     return result;
 
@@ -70,9 +70,18 @@ const deleteFieldContentType = async (fieldToDelete, typeName) => {
     return `Field ${fieldToDelete} deleted`;
 };
 
+const getFieldsInSpecificContentType = async (typeName) => {
+    const fields = await contentTypes.findOne({
+        where: { typeName: typeName },
+        attributes: ['fields']
+    });
+    return fields;
+};
+
 module.exports = {
     getAllContentTypes,
     createNewContentType,
     addNewFieldContentType,
-    deleteFieldContentType
+    deleteFieldContentType,
+    getFieldsInSpecificContentType
 };

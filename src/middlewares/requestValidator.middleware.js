@@ -4,7 +4,8 @@ const bodyValidator = (schema) => {
         if (error) {
             res.status(400).json({ message: error.message });
         }
-        next();
+        else 
+            next();
     };
 };
 
@@ -14,7 +15,8 @@ const paramsValidator = (schema) => {
         if (error) {
             res.status(400).json({ message: error.message });
         }
-        next();
+        else 
+            next();
     };
 };
 

@@ -2,7 +2,7 @@ const Joi = require('joi');
 
 const postNewContentTypeSchema = Joi.object({
     typeName: Joi.string().required(),
-    fields: Joi.array().items(Joi.string()).required()
+    fields: Joi.array().items(Joi.string()).optional()
 });
 
 const makeNewFieldInSpecificContentTypeSchema = Joi.object({
