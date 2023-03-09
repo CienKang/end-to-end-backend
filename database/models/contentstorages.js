@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     }
     contentStorages.init({
         typeId: DataTypes.INTEGER,
-        data: DataTypes.JSON
+        data: DataTypes.JSONB
     }, {
         sequelize,
         modelName: 'contentStorages',
