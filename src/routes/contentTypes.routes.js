@@ -10,6 +10,7 @@ app.route('/contentTypes')
 
 app.route('/contentTypes/:typeName')
     .patch(validatorMiddleware.bodyValidator(schemas.makeNewFieldInSpecificContentTypeSchema), contentTypesController.addNewFieldInSpecificContentType)
-    .delete(validatorMiddleware.bodyValidator(schemas.deleteFieldInSpecificContentTypeSchema), contentTypesController.deleteFieldInSpecificContentType);
+    .delete(validatorMiddleware.bodyValidator(schemas.deleteFieldInSpecificContentTypeSchema), contentTypesController.deleteFieldInSpecificContentType)
+    .post(contentTypesController.renameContentType);
 
 module.exports = app;

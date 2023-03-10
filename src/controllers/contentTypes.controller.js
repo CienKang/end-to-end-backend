@@ -48,11 +48,22 @@ const getFieldsInSpecificContentType = async (req, res) => {
     }
 };
 
+const renameContentType = async (req, res) => {
+    try {
+        const { typeName } = req.params;
+        const newTypeName = await ContentTypeServices.renameContentType(typeName, req.body.newTypeName);
+        res.status(200).json(newTypeName);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
+};
+
 
 module.exports = {
     getContentTypes,
     postNewContentType,
     addNewFieldInSpecificContentType,
     deleteFieldInSpecificContentType,
-    getFieldsInSpecificContentType
+    getFieldsInSpecificContentType,
+    renameContentType
 };

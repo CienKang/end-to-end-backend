@@ -10,7 +10,7 @@ const getAllContentTypes = async () => {
 };
 
 const createNewContentType = async (newContentType) => {
-    const result = await contentTypes.create(newContentType);
+    const result = await contentTypes.create({...newContentType,fields:[]});
     return result;
 };
 
@@ -78,10 +78,21 @@ const getFieldsInSpecificContentType = async (typeName) => {
     return fields;
 };
 
+const renameContentType = async (oldTypeName, newTypeName) => {
+    const result = await contentTypes.update(
+        { typeName: newTypeName },
+        { where: { typeName: oldTypeName } }
+    );
+
+    return result;
+};
+
+
 module.exports = {
     getAllContentTypes,
     createNewContentType,
     addNewFieldContentType,
     deleteFieldContentType,
-    getFieldsInSpecificContentType
+    getFieldsInSpecificContentType,
+    renameContentType
 };
