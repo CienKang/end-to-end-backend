@@ -16,7 +16,7 @@ const postContentStorageForTypeId = async (req, res) => {
         const { typeId } = req.params;
         const content = req.body.data;
         const contentStorage = await contentStorageServices.postContentStorageForTypeId(typeId, content);
-        res.status(200).json(contentStorage);
+        res.status(201).json(contentStorage);
     } catch (error) {
         res.status(404).json({ message: error.message });
     }
@@ -27,7 +27,7 @@ const updateSpecificContentStorageOfTypeId = async (req, res) => {
         const { typeId } = req.params;
         const { content } = req.body;
         const contentStorage = await contentStorageServices.updateSpecificContentStorageForTypeId(typeId, content);
-        res.status(200).json(contentStorage);
+        res.status(201).json(contentStorage);
     } catch (error) {
         res.status(404).json({ message: error.message });
     }
@@ -38,7 +38,7 @@ const deleteSpecificContentStorageOfTypeId = async (req, res) => {
         const { typeId } = req.params;
         const { id } = req.body;
         const contentStorage = await contentStorageServices.deleteSpecificContentStorageForTypeId(typeId, id);
-        res.status(200).json(contentStorage);
+        res.status(204).json(contentStorage);
     } catch (error) {
         res.status(404).json({ message: error.message });
     }
