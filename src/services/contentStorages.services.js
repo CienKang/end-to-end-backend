@@ -1,7 +1,7 @@
 const { contentStorages } = require('../../database/models');
 
 const getContentStorageForTypeId = async (typeId) => {
-    console.log();
+    console.log(typeId.toString());
     const result = await contentStorages.findAll({
         where: { typeId: parseInt(typeId) }
     });
