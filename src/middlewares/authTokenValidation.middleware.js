@@ -12,10 +12,7 @@ const authTokenValidation = (req, res, next) => {
         } else {
             res.status(403).send('Forbidden');
         }
-    }).catch(err => {
-        res.status(500).send(err);
-    }
-    );
+    });
 };
 
 module.exports = authTokenValidation;

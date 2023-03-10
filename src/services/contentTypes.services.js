@@ -3,14 +3,14 @@ const { contentTypes, contentStorages } = require('../../database/models');
 const getAllContentTypes = async () => {
 
     const result = await contentTypes.findAll({
-        attributes: ['typeName', 'fields','id']
+        attributes: ['typeName', 'fields', 'id']
     });
     return result;
 
 };
 
 const createNewContentType = async (newContentType) => {
-    const result = await contentTypes.create({...newContentType,fields:[]});
+    const result = await contentTypes.create({ ...newContentType, fields: [] });
     return result;
 };
 

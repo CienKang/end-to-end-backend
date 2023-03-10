@@ -1,4 +1,4 @@
-const authTokenValidaton= require('../../src/middlewares/authTokenValidation.middleware');
+const authTokenValidaton = require('../../src/middlewares/authTokenValidation.middleware');
 
 describe('authoTokenValidation', () => {
     describe('authTokenValidation', () => {

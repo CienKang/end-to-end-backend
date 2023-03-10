@@ -23,7 +23,7 @@ describe('ContentStoragesController', () => {
         });
 
         it('should return status 404 and error message when passed with incorrect typeId', async () => {
-            
+
             const req = {
                 params: {
                     typeId: '1'
@@ -65,7 +65,7 @@ describe('ContentStoragesController', () => {
         });
 
         it('should return status 404 and error message when passed with incorrect typeId and data', async () => {
-                
+
             const req = {
                 params: {
                     typeId: '1'
@@ -78,7 +78,7 @@ describe('ContentStoragesController', () => {
                 status: jest.fn().mockReturnThis(),
                 json: jest.fn()
             };
-    
+
             jest.spyOn(contentStorageServices, 'postContentStorageForTypeId').mockRejectedValue(new Error('error'));
             await contentStoragesController.postContentStorageForTypeId(req, res);
             expect(res.status).toHaveBeenCalledWith(404);
@@ -110,7 +110,7 @@ describe('ContentStoragesController', () => {
         });
 
         it('should return status 404 and error message when passed with incorrect typeId and data', async () => {
-                
+
             const req = {
                 params: {
                     typeId: '1'
@@ -123,7 +123,7 @@ describe('ContentStoragesController', () => {
                 status: jest.fn().mockReturnThis(),
                 json: jest.fn()
             };
-    
+
             jest.spyOn(contentStorageServices, 'updateSpecificContentStorageForTypeId').mockRejectedValue(new Error('error'));
             await contentStoragesController.updateSpecificContentStorageOfTypeId(req, res);
             expect(res.status).toHaveBeenCalledWith(404);
@@ -132,7 +132,7 @@ describe('ContentStoragesController', () => {
     });
 
     describe('deleteSpecificContentStorageOfTypeId', () => {
-            
+
         it('should return status 204 and contentStorage when passed with correct typeId and content', async () => {
             const req = {
                 params: {
@@ -146,16 +146,16 @@ describe('ContentStoragesController', () => {
                 status: jest.fn().mockReturnThis(),
                 json: jest.fn()
             };
-    
+
             jest.spyOn(contentStorageServices, 'deleteSpecificContentStorageForTypeId').mockResolvedValue({ id: 1, typeId: 1, content: 'test' });
-    
+
             await contentStoragesController.deleteSpecificContentStorageOfTypeId(req, res);
             expect(res.status).toHaveBeenCalledWith(204);
             expect(res.json).toHaveBeenCalledWith({ id: 1, typeId: 1, content: 'test' });
         });
-    
+
         it('should return status 404 and error message when passed with incorrect typeId and data', async () => {
-                    
+
             const req = {
                 params: {
                     typeId: '1'
@@ -168,7 +168,7 @@ describe('ContentStoragesController', () => {
                 status: jest.fn().mockReturnThis(),
                 json: jest.fn()
             };
-        
+
             jest.spyOn(contentStorageServices, 'deleteSpecificContentStorageForTypeId').mockRejectedValue(new Error('error'));
             await contentStoragesController.deleteSpecificContentStorageOfTypeId(req, res);
             expect(res.status).toHaveBeenCalledWith(404);
